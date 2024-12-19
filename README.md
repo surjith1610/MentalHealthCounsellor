@@ -1,4 +1,4 @@
-# **MentalHealthCounsellor**
+# **Mental Health Counsellor**
 
 The **MentalHealthCounsellor** is a web application built using **Streamlit**, designed to provide mental health-related responses and stress predictions. It integrates advanced machine learning models and the **Llama-3.3-70b Versatile** model to offer helpful insights. The application has two core functionalities:
 
@@ -49,13 +49,12 @@ The **MentalHealthCounsellor** is a web application built using **Streamlit**, d
   - `chromadb`
   - `joblib`
   - `llama-index`
-  - `transformers`
   - Other dependencies listed in `requirements.txt`
 
-### **Step-by-Step Guide**
+**Step-by-Step Guide**
 
 1. **Clone the Repository**:
-   git clone "repo link here"
-   cd directory name
+  - git clone "repo link here"
+  - cd directory name
 
 2. **Follow the Shell Script**
