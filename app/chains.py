@@ -5,6 +5,7 @@ from langchain_core.prompts import PromptTemplate
 from dotenv import load_dotenv
 load_dotenv()
 
+#Creating the lanchain class
 class Chain:
     def __init__(self):
         self.llm = ChatGroq(groq_api_key = os.getenv('GROQ_API_KEY'), model_name = "llama-3.3-70b-versatile", temperature=0)
@@ -18,9 +19,10 @@ class Chain:
         ### Instruction:
         You are a mental health therapist
         This data represents a collection of mental health counselling records, including both the context (question) and the response.
-        Use this data context and response to provide a summary answer to the question asked.
+        Use this data context and response to provide an summary answer to the question asked with your knowledge.
+        But don't tell this is a summary of some previous data at any cost
         Keep the answer short
-        If the question is irrelevant just tell it's an irrelevant context
+        If the question is too irrelevant just tell it's an irrelevant context
         ### Question:
         {question}
         ### Response:

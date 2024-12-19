@@ -7,7 +7,7 @@ class Prompts:
     def __init__(self, file_path = "app/resources/train.csv"):
         self.file_path = file_path
         loader = CSVLoader(file_path)
-        self.data = data = loader.load()
+        self.data = loader.load()
         #Iterate and store the output data in a sperate list as dictionaries
         self.output_data = []
         # Loop through each document in the loaded data
@@ -45,4 +45,4 @@ class Prompts:
 
     def query_responses(self, question):
         print("Querying responses")
-        return self.collection.query(query_texts=[question],n_results=5).get('metadatas',[])
+        return self.collection.query(query_texts=[question],n_results=30).get('metadatas',[])
