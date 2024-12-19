@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 # Load the stress prediction model
-model = joblib.load("app/stress_prediction_model.pkl")
+model = joblib.load("app/stress_prediction_RF_model.pkl")
 
 
 # Stress Level Prediction Function
@@ -21,16 +21,12 @@ def stress_prediction():
     with col1:
         gender = st.radio("Gender", options=["Male", "Female"])
         age = st.number_input("Age", min_value=1, max_value=100, value=25)
-        occupation = st.selectbox("Occupation", options=[
-            "Scientist", "Doctor", "Accountant", "Teacher", "Manager",
-            "Engineer", "Sales Representative", "Salesperson",
-            "Lawyer", "Software Engineer", "Nurse"
-        ])
         sleep_duration = st.number_input("Sleep Duration (hours)", min_value=0.0, max_value=24.0, value=7.0)
         quality_of_sleep = st.slider("Quality of Sleep (1-10)", min_value=1, max_value=10, value=5)
+        bmi_category = st.radio("BMI Category", options=["Normal", "Overweight", "Obese"])
 
     with col2:
-        bmi_category = st.radio("BMI Category", options=["Underweight", "Normal", "Overweight"])
+        
         heart_rate = st.number_input("Heart Rate (bpm)", min_value=50, max_value=150, value=70)
         daily_steps = st.number_input("Daily Steps", min_value=0, value=10000)
         systolic_bp = st.number_input("Systolic Blood Pressure", min_value=50, max_value=200, value=120)
@@ -38,18 +34,13 @@ def stress_prediction():
 
     # Encode inputs for prediction
     gender_encoded = 1 if gender == "Male" else 0
-    occupation_encoded = [
-        "Scientist", "Doctor", "Accountant", "Teacher", "Manager",
-        "Engineer", "Sales Representative", "Salesperson",
-        "Lawyer", "Software Engineer", "Nurse"
-    ].index(occupation)
-    bmi_category_encoded = ["Underweight", "Normal", "Overweight"].index(bmi_category) + 1
+    bmi_category_encoded = 0 if bmi_category == "Normal" else 2 if bmi_category == "Obese" else 3
 
     if st.button("Predict Stress Level"):
-        user_input = np.array([[gender_encoded, age, occupation_encoded, sleep_duration,
+        user_input = np.array([[gender_encoded, age, sleep_duration,
                                 quality_of_sleep, bmi_category_encoded, heart_rate,
                                 daily_steps, systolic_bp, diastolic_bp]])
-        columns = ['Gender', 'Age', 'Occupation', 'Sleep Duration', 'Quality of Sleep',
+        columns = ['Gender', 'Age', 'Sleep Duration', 'Quality of Sleep',
                    'BMI Category', 'Heart Rate', 'Daily Steps', 'Systolic BP', 'Diastolic BP']
         user_input_df = pd.DataFrame(user_input, columns=columns)
 
