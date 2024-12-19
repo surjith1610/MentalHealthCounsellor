@@ -43,6 +43,7 @@ idna==3.10
 importlib_metadata==8.5.0
 importlib_resources==6.4.5
 Jinja2==3.1.4
+joblib==1.4.2
 jsonpatch==1.33
 jsonpointer==3.0.0
 jsonschema==4.23.0
@@ -106,6 +107,8 @@ requests-toolbelt==1.0.0
 rich==13.9.4
 rpds-py==0.22.3
 rsa==4.9
+scikit-learn==1.6.0
+scipy==1.14.1
 shellingham==1.5.4
 six==1.17.0
 smmap==5.0.1
@@ -115,6 +118,7 @@ starlette==0.41.3
 streamlit==1.41.1
 sympy==1.13.3
 tenacity==9.0.0
+threadpoolctl==3.5.0
 tokenizers==0.20.3
 toml==0.10.2
 tornado==6.4.2

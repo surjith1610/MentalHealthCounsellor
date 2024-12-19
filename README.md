@@ -53,8 +53,16 @@ The **MentalHealthCounsellor** is a web application built using **Streamlit**, d
 
 **Step-by-Step Guide**
 
-1. **Clone the Repository**:
+1. **Clone the Repository or copy the application**:
   - git clone "repo link here"
   - cd directory name
+  - or
+  - From local terminal
+  - scp -r /Users/surjith/Downloads/MentalHealthCounsellor-main.zip digitalocean:/home
+  - scp -r /Users/surjith/Desktop/LegacyAssesment/MentalHealthCounsellor/digital_ocean.sh digitalocean:/home
+  From
+  - cd /home
+  **Replace the Groq API key for the env file**
+  - sh digital_ocean.sh
 
 2. **Follow the Shell Script**

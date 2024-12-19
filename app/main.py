@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 # Load the stress prediction model
-model = joblib.load("/Users/surjith/Desktop/LegacyAssesment/MentalHealthCounsellor/app/stress_prediction_model.pkl")
+model = joblib.load("app/stress_prediction_model.pkl")
 
 
 # Stress Level Prediction Function
