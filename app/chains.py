@@ -35,5 +35,6 @@ class Chain:
         res = chain_extract.invoke(input={"responses": responses, "question": question})
 
         print("Inside response generator")
+        # print(responses)
 
         return res.content

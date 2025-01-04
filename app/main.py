@@ -62,6 +62,8 @@ def create_streamlit_app(prompts, clean_text):
             question = clean_text(input_text)
             prompts.load_prompts()
             responses = prompts.query_responses(question)
+            print("Inside create_streamlit_app")
+            # print(responses)
 
             # result = chain.response_generator(question, responses)
             result = chain.response_generator(question, responses)
