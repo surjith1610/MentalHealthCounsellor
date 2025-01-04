@@ -1,0 +1,14 @@
+[Unit]
+Description=Streamlit Web Application
+After=network.target
+
+[Service]
+User=legacy
+Group=legacy
+WorkingDirectory=/home/legacy/MentalHealthCounsellor
+EnvironmentFile=/etc/environment
+ExecStart=/home/legacy/MentalHealthCounsellor/venv/bin/streamlit run /home/legacy/MentalHealthCounsellor/app/main.py --server.address=0.0.0.0 --server.port=8000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
