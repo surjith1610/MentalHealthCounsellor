@@ -58,22 +58,9 @@ jobs:
             echo "IS_DEV_ENVIRONMENT=${{ vars.isDevEnvironment }}" >> $GITHUB_ENV
             echo "IS_DEMO_ENVIRONMENT=${{ vars.isDemoEnvironment }}" >> $GITHUB_ENV
 
-      - name: Set the Environment
-        id: determine-environment
-        run: |
-          if [ "${{ env.IS_DEV_ENVIRONMENT }}" == "true" ] && [ "${{ env.IS_DEMO_ENVIRONMENT }}" == "true" ]; then
-            echo "ENVIRONMENTS=dev,demo" >> $GITHUB_ENV
-          elif [ "${{ env.IS_DEV_ENVIRONMENT }}" == "true" ]; then
-            echo "ENVIRONMENTS=dev" >> $GITHUB_ENV
-          elif [ "${{ env.IS_DEMO_ENVIRONMENT }}" == "true" ]; then
-            echo "ENVIRONMENTS=demo" >> $GITHUB_ENV
-          else
-            echo "Error: No environment provided" >&2
-            exit 1
-          fi
 
       - name: Configure DEV account AWS credentials
-        if: contains(env.ENVIRONMENTS, 'dev')
+        if: ${{ vars.isDevEnvironment == 'true' }}
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -81,15 +68,17 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Process dev environment
-        if: ${{ env.ENVIRONMENTS == 'dev' || env.ENVIRONMENTS == 'dev,demo' }}
+        if: ${{ vars.sDevEnvironment == 'true' }}
         run: |
           echo "currently running in Dev Environment..."
           echo "For now, the script will skip the deployment to the Dev environment"
 
       - name: Configure DEMO account AWS credentials
+        if: ${{ vars.isDemoEnvironment == 'true' }}
         run: echo "Set up AWS credentials for DEMO account"
 
       - name: Process demo environment
+        if: ${{ vars.isDemoEnvironment == 'true' }}
         run: |
          echo "currently running in Demo Environment..."
          echo "For now, the script will skip the deployment to the Demo environment"
