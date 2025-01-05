@@ -53,7 +53,7 @@ def stress_prediction():
 
 
 def create_streamlit_app(prompts, clean_text):
-    st.title("Llama Mental Health Counsellor")
+    st.title("Husky Heal")
     input_text = st.text_area("Enter your question here", value=st.session_state.input_text, key="user_input")
     submit_button = st.button("Submit")
 
