@@ -52,6 +52,12 @@ jobs:
           echo "ami_id=$AMI_ID" >> $GITHUB_OUTPUT
           echo "AMI_ID=$AMI_ID" >> $GITHUB_ENV
 
+      - name: Get the Environment
+        id: fetch-environment-vars
+        run: |
+            echo "IS_DEV_ENVIRONMENT=${{ vars.isDevEnvironment }}" >> $GITHUB_ENV
+            echo "IS_DEMO_ENVIRONMENT=${{ vars.isDemoEnvironment }}" >> $GITHUB_ENV
+
       - name: Set the Environment
         id: determine-environment
         run: |
