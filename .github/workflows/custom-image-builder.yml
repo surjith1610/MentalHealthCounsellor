@@ -79,4 +79,12 @@ jobs:
         run: |
           echo "currently running in Dev Environment..."
           echo "For now, the script will skip the deployment to the Dev environment"
+
+      - name: Configure DEMO account AWS credentials
+        run: echo "Set up AWS credentials for DEMO account"
+
+      - name: Process demo environment
+        run: |
+         echo "currently running in Demo Environment..."
+         echo "For now, the script will skip the deployment to the Demo environment"
         
